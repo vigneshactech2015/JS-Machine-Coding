@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.user-name{
+    color:beige;
+}
+
+.user-image{
+    border-radius:50%;
+    height:100px;
+}
+
+.user-container{
+    background:black;
+    color:white;
+    padding:10px;
+    margin-bottom: 8px;
+    border-radius: 16px;
+    font-family: 'Roboto', sans-serif;
+    display:flex;
+    gap:10px;
+    max-width:450px;
+    transition: all 0.2s;
+    opacity:0.8;
+}
+
+.user-image:hover{
+    transform:scale(1.1);
+    border:3px solid lavender;
+}
+
+.user-container:hover{
+  transform:scale(1.1);
+  opacity:1;
+}
+
+.user-time{
+    color:purple;
+}
+
+body{
+    display:grid;
+    height:100vh;
+    place-items:center;
+}
