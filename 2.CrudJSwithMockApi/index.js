@@ -14,6 +14,7 @@ getUsers();
 function loadUsers(users){
 
 const userList=document.createElement("div");
+//this is essential for removing the old list
 userList.className='user-list';
 users.forEach((user)=>{
 
@@ -86,6 +87,7 @@ body:JSON.stringify(userDetails)
 //refresh users  --so that it gets appended without refreshing
 
 function refreshUsers(){
+//this is essential for removing the old list
 document.querySelector('.user-list').remove();
 formReset();
 getUsers();
