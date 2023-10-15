@@ -69,3 +69,31 @@ const onload = () => {
 
 window.onload = onload();
 
+
+//method 2
+
+const textInput = document.querySelector("#textInput")
+const addBtn = document.querySelector("#addBtn")
+const items = []
+let first;
+
+function addBtnHandler () {
+    items.push(textInput.value)
+    loadItems(items)
+    first = 'exists'
+   
+}
+
+function loadItems(i){
+    if(first){
+        document.querySelector('.container').remove()
+    }
+    const ItemContainer = document.createElement('div');
+    ItemContainer.className = "container";
+    i.forEach((item,index)=>{
+        const itemHTML = document.createElement('div')
+        itemHTML.innerHTML = `<p>${item}</p>`
+        ItemContainer.append(itemHTML)
+    })
+    document.body.append(ItemContainer)
+}
