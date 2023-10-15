@@ -71,7 +71,6 @@ window.onload = onload();
 
 
 //method 2
-
 const textInput = document.querySelector("#textInput")
 const addBtn = document.querySelector("#addBtn")
 const items = []
@@ -92,8 +91,13 @@ function loadItems(i){
     ItemContainer.className = "container";
     i.forEach((item,index)=>{
         const itemHTML = document.createElement('div')
-        itemHTML.innerHTML = `<p>${item}</p>`
+        itemHTML.innerHTML = `<p>${item}</p> <button onclick="deleteHandler(${index})">Delete</button>`
         ItemContainer.append(itemHTML)
     })
     document.body.append(ItemContainer)
+}
+
+function deleteHandler(index){
+    items.splice(index,1)
+    loadItems(items)
 }
