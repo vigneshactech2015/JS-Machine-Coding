@@ -29,3 +29,35 @@ function execute(operation){
 //Fixed number of argument with reusablility
 let mul = execute("multiply")
 console.log(mul(1)(5))
+
+//Example 3 --> DOM Manipulation
+
+//html
+<h1 id="heading">Hello World</h1>
+
+//JS
+
+function updateElementText(id){
+  return function(content){
+    document.querySelector("#"+id).textContent = content;
+  }
+}
+
+const updateHeader = updateElementText("heading")
+
+updateHeader("Hello World Updated")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
