@@ -38,7 +38,40 @@ console.time("50")
 closure(50)
 console.timeEnd("50")
 
+//Example 2
 
+for(var i = 0; i<3 ; i++){
+  setTimeout(function log(){
+    console.log(i)  
+},i*1000)
+}
+
+output --> 3 3 3
+because var is a function scope and not a block scope 
+hence it has reference to i
+
+for(let i = 0; i<3 ; i++){
+  setTimeout(function log(){
+    console.log(i)  
+},i*1000)
+}
+
+output --> 0 1 2
+because let is a block scope hence it has reference to block scope
+
+//to get 0 1 2 in var itself we can make use of closures
+
+for(var i = 0; i<3 ; i++){
+
+  function inner(i){
+    setTimeout(function log(){
+      console.log(i)  
+    },i*1000)
+  }
+
+  inner(i)
+  
+}
 
 
 
