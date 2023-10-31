@@ -53,6 +53,7 @@ updateHeader("Hello World Updated")
 
 function curry(func){
   return function curriedFunc(...args){
+    //base case
     if(args.length >= func.length){
         return func(...args)  
     } else {
