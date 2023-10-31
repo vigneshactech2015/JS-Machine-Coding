@@ -22,7 +22,7 @@ console.timeEnd("12")
 function find(){
   let a = []
   for(let i=0 ; i<1000000; i++){
-  a[i] = i * 1;
+  a[i] = i * i;
   }
 
   return function(index){
