@@ -1,10 +1,10 @@
 //Time Optimization using closure
 
 //before closure
-function find(){
+function find(index){
   let a = []
   for(let i=0 ; i<1000000; i++){
-  a[i] = i * 1;
+  a[i] = i * i;
   }
 
   console.log(a[index])
