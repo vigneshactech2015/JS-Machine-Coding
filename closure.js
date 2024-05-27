@@ -1,4 +1,8 @@
 //Time Optimization using closure
+// Disadvantage of closure
+
+// garbarge collection will not work with closure
+// so there will be memory leak
 
 //before closure
 function find(index){
