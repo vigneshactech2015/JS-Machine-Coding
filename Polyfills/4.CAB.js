@@ -38,3 +38,5 @@ Function.prototype.myApply = function(scope,args){
     scope._this = this;
     return scope._this(...args)
 }
+
+//use apply if you don't know the number of arguments you will be passing
