@@ -10,7 +10,7 @@ array of promises with 9 success and 1 error message
 
 3.Promise.race([])
 
-  * We get result of 1st settled promise which can either be success/failue
+  * We get result of 1st settled promise which can either be success/failure
 
 4.Promise.any([])
 
