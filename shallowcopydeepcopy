@@ -2,6 +2,7 @@
 // creates new object but only copies the references of nested objects not the original actual nested object
 // useful for simple object . 
 // Faster and less resource intensive
+// changes affect the original object
 const obj1 = {
   "name":"vignesh",
   "address":{
@@ -16,6 +17,7 @@ console.log('...shallow copy',obj1.address.city)
 // deep copy --> creates new object and recursively copies all nested object
 // useful for complex deeply nested object
 // slower and more resource intensive
+// changes does not affect original object
 const obj = {
   "name":"vignesh",
   "address":{
