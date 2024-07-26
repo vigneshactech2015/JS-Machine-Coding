@@ -1,0 +1,28 @@
+// shallow copy 
+// creates new object but only copies the references of nested objects not the original actual nested object
+// useful for simple object . 
+// Faster and less resource intensive
+const obj1 = {
+  "name":"vignesh",
+  "address":{
+    "city":"chennai"
+  }
+}
+
+const obj2 = {...obj1}
+obj2.address.city = "bangalore"
+console.log('...shallow copy',obj1.address.city)
+
+// deep copy --> creates new object and recursively copies all nested object
+// useful for complex deeply nested object
+// slower and more resource intensive
+const obj = {
+  "name":"vignesh",
+  "address":{
+    "city":"chennai"
+  }
+}
+
+const deepcopy = JSON.parse(JSON.stringify(obj))
+deepcopy.address.city = 'bangalore'
+console.log('...deep copy',obj.address.city)
