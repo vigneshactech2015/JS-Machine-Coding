@@ -1,18 +1,18 @@
-1.Promise.all([])
+1) Promise.all([])
   * takes array of promise
   * wait till all the promises are resolved
   * if some promise fails then throws an error
 
-2.Promise.allSettled([])
+2) Promise.allSettled([])
 
   * suppose 10 Api Call , 9 success and 1 failure then we get
 array of promises with 9 success and 1 error message
 
-3.Promise.race([])
+3) Promise.race([])
 
   * We get result of 1st settled promise which can either be success/failure
 
-4.Promise.any([])
+4) Promise.any([])
 
   * Wait for 1st success promise.
   * Doesn't throw error.
