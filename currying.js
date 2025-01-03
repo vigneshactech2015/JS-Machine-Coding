@@ -7,7 +7,7 @@
 //Example 1
 function infiniteSum(a){
   return function(b){
-    if(b) return infiniteSum(a+b)
+    if(b !== undefined) return infiniteSum(a+b)
     return a
   }
 }
