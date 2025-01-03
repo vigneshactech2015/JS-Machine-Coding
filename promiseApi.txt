@@ -1,4 +1,5 @@
 1) Promise.all([])
+
   * takes array of promise
   * wait till all the promises are resolved
   * if some promise fails then throws an error
