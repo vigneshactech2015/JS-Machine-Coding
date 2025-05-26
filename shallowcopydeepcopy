@@ -28,3 +28,36 @@ const obj = {
 const deepcopy = JSON.parse(JSON.stringify(obj))
 deepcopy.address.city = 'bangalore'
 console.log('...deep copy',obj.address.city)
+
+// Another method to deep clone
+
+function deepClone(obj) {
+  // Handle null or non-object types (primitives)
+  if (obj === null || typeof obj !== 'object') {
+    return obj;
+  }
+
+  // Handle Date objects
+  if (obj instanceof Date) {
+    return new Date(obj.getTime());
+  }
+
+  // Handle Arrays
+  if (Array.isArray(obj)) {
+    const arrCopy = [];
+    for (const item of obj) {
+      arrCopy.push(deepClone(item));
+    }
+    return arrCopy;
+  }
+
+  // Handle Objects
+  const cloneObj = {};
+  for (const key in obj) {
+    if (obj.hasOwnProperty(key)) {
+      cloneObj[key] = deepClone(obj[key]);
+    }
+  }
+  return cloneObj;
+}
+
