@@ -18,3 +18,24 @@ array of promises with 9 success and 1 error message
   * Wait for 1st success promise.
   * Doesn't throw error.
   * If everything fails return result will be aggregated error -> array of all error message
+
+Promise.all example 
+
+const apiEndPoints = ["api1","api2","api3"]
+
+const fetchProductData = async (urls) => {
+  try{
+  const response = await Promise.all(
+   urls.map(async(url)=>{
+   const res = await fetch(url);
+  if(!res.ok) throw new Error("Failed to fetch")
+  return await res.json()
+}
+  )
+  console.log("Fetched data",response)
+ }catch(err){
+ console.log(err)
+}
+}
+
+fetchProductData(apiEndPoints)
