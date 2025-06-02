@@ -39,3 +39,95 @@ const fetchProductData = async (urls) => {
 }
 
 fetchProductData(apiEndPoints)
+
+
+// Real use case 
+
+const textToSpeech = async (text: string, languageCode: string = 'en-US') => {
+  return new Promise<void>(async (resolve, reject) => {
+    try {
+      const apiKey = process.env.REACT_APP_TEXTTOSPEECHKEY;
+      const url = `https://texttospeech.googleapis.com/v1/text:synthesize?key=${apiKey}`;
+
+      const requestBody = {
+        input: { text },
+        voice: {
+          languageCode,
+          ssmlGender: 'NEUTRAL'
+        },
+        audioConfig: {
+          audioEncoding: 'MP3'
+        }
+      };
+
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(requestBody)
+      });
+
+      const data = await response.json();
+
+      if (data.audioContent) {
+        const audio = new Audio(`data:audio/mp3;base64,${data.audioContent}`);
+        audio.onended = () => resolve();
+        audio.onerror = (e) => reject(e);
+        audio.play();
+      } else {
+        console.error('Failed to synthesize speech', data);
+        resolve();
+      }
+    } catch (err) {
+      console.log(err)
+      resolve();
+    }
+  });
+};
+
+
+
+  useEffect(() => {
+    const handleMessage = async () => {
+      if (lastMessage && isValidJSON(lastMessage.data)) {
+        const msg = lastMessage?.data || '';
+        const message = JSON.parse(msg);
+
+        console.info("================Message received ==================");
+        console.info(message);
+        console.info("================Message received ==================");
+        getTokenSystemList();
+
+        if (
+          message.action === 'start' &&
+          message.hospitalId === user?.id &&
+          message.topic === 'token_call' &&
+          (message.callinfo === 'nextpatient' && user?.role === 'Token')
+        ) {
+          const audioText: string = message?.patientName
+            ? `Token Number ${message.tokenNumber} - ${message.patientName}`
+            : `Token Number ${message.tokenNumber}`;
+          setRetryCount(0);
+
+          const getCurrentUser = async () => {
+            try {
+              const response = await getHttpClient(CurrentUser.me, 'GET');
+              return response?.data?.audio_language;
+            } catch (err) {
+              console.log(err);
+              return 'ENGLISH';
+            }
+          };
+
+          const audioLanguage = await getCurrentUser() ?? 'ENGLISH';
+
+          for (let i = 1; i <= 3; i++) {
+             await textToSpeech(audioText, i===1?languageToCode["ENGLISH"]:languageToCode[audioLanguage]);
+          }
+        }
+      }
+    };
+
+    handleMessage();
+  }, [lastMessage, user, language]);
