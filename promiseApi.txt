@@ -41,7 +41,9 @@ const fetchProductData = async (urls) => {
 fetchProductData(apiEndPoints)
 
 
-// Real use case 
+// Real use case of promise : 
+
+// here I want to call audio one by one . First audio language to be english rest whatever audio being passed
 
 const textToSpeech = async (text: string, languageCode: string = 'en-US') => {
   return new Promise<void>(async (resolve, reject) => {
