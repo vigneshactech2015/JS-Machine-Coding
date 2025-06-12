@@ -25,6 +25,7 @@ Array.prototype.myReduce = function(callback,initialValue) {
     }
 
     let k = 0;
+    //If no initial value is passed → use the first element of the array as acc, and start loop from the second element (k++).
     let acc = arguments.length < 2 ? this[k++] :initialValue;
     //this points to array that is executing this method
     while(k<this.length){
