@@ -8,6 +8,8 @@ function once(func,context){
     if(func){
       ran = func.apply(context || this , arguments)
       func = null
+    }else {
+      console.warn("⚠️ Function has already been called once. Ignoring this call.");
     }
     return ran
   }
